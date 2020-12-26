@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  creator:
+    build: creator/
+    command: python -m home.app
+    volumes:
+      - ./text_file:/home/text_file/
+
+  reader:
+    build: reader/
+    command: python -m home.app
+    volumes:
+      - ./text_file:/home/text_file/
+    depends_on:
+      - creator
